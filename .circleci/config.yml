@@ -440,6 +440,7 @@ jobs:
                       --no-paginate --output text)
             echo "Old Wokflow ID: $OLD_WORKFLOW_ID"
             curl https://kvdb.io/5dR7n4E8kRzBgGRhLTTrZu/old_workflow_id -d "${OLD_WORKFLOW_ID}"
+            
       - run:
           name: Update cloudfront distribution
           command: |
@@ -489,7 +490,7 @@ jobs:
 
   cleanup:
     docker:
-      - image: amazon/aws-cli 
+      - image: cimg/base:stable
     steps:
       - checkout
       - run:
