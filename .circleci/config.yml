@@ -445,19 +445,19 @@ jobs:
             # apt install -y nodejs
             pwd
           
-      # - run:
-      #     name: Update cloudfront distribution
-      #      # working_directory.circleci/files.
-      #     command: |
-      #       # your code here
-      #       aws cloudformation deploy \
-      #         --template-file .circleci/files/cloudfront.yml \
-      #         --stack-name InitialStack \
-      #         --parameter-overrides WorkflowID="udapeople-${CIRCLE_WORKFLOW_ID:0:7}"  \
-      #         --tags project=udapeople 
+      - run:
+          name: Update cloudfront distribution
+           # working_directory.circleci/files.
+          command: |
+            # your code here
+            aws cloudformation deploy \
+              --template-file .circleci/files/cloudfront.yml \
+              --stack-name InitialStack \
+              --parameter-overrides WorkflowID="udapeople-${CIRCLE_WORKFLOW_ID:0:7}"  \
+              --tags project=udapeople 
 
-      # - destroy-environment
-      # - revert-migrations
+      - destroy-environment
+      - revert-migrations
       
 
   cleanup:
