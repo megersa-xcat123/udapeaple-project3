@@ -146,7 +146,7 @@ jobs:
   test-backend:
     docker:
       - image: circleci/node:13.8.0
-      # Docker image here
+   
     steps:
       - checkout
       - attach_workspace:
@@ -159,8 +159,7 @@ jobs:
           path: ./backend/test_results
       - store_artifacts:
           path: ./backend/test_results
-  ########
-    
+
   scan-frontend:
     docker:
       - image: circleci/node:13.8.0
@@ -201,7 +200,6 @@ jobs:
           paths: [backend/node_modules]
           key: scanbackend-build
 
-  ################
   deploy-infrastructure:
      docker:
       - image: cimg/base:stable
@@ -255,8 +253,6 @@ jobs:
 # udapeople-388142339351
   configure-infrastructure:
     docker:
-      # Docker image here that supports Ansible
-      #  - image: python:3.9.0-alpine 
       - image: cimg/base:stable
     steps:
       - checkout #-code from git
@@ -386,7 +382,6 @@ jobs:
     docker:
       - image: cimg/base:stable
     steps:
-      # Checkout code from git
       - checkout
       #- checkut
       - install_nodejs
