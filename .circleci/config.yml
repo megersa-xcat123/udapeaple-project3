@@ -385,12 +385,13 @@ jobs:
             echo ${BACKEND_PUBLIC_IP}
             echo backend-${CIRCLE_WORKFLOW_ID:0:7}
             echo ${API_URL}
-            if curl -s ${API_URL}/api/status | grep "ok"
+            if curl "${API_URL}/api/status" | grep "ok"     
             then
-              exit 0
+              return 0
             else
-              exit 1
+              return 1
             fi
+
       - run:
           name: frontend smoke test
           command: |
@@ -398,9 +399,9 @@ jobs:
             echo $FORNTEND_WEBSITE
             if curl -s ${FORNTEND_WEBSITE} | grep "Welcome"
             then
-              exit 1
+              return 1
             else
-              exit 1
+              return 1
             fi
       - destroy-environment
       - revert-migrations
